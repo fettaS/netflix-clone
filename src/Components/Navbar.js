@@ -6,16 +6,17 @@ function Navbar() {
     const [show, handleShow] = useState(false);
 
     useEffect(() => {
-        window.addEventListener("scroll", () => {
+        const handleScroll = () => {
             if (window.scrollY > 100){
                 handleShow(true);
-            }else{
+            } else {
                 handleShow(false);
             }
-        });
+        };
+        window.addEventListener("scroll", handleScroll);
         return () => {
-            window.removeEventListener("scroll");
-        }
+            window.removeEventListener("scroll", handleScroll);
+        };
     }, [])
 
     return (
